@@ -33,7 +33,6 @@ body {
     position: absolute;
     width: max-content;
     height: 180px;
-    pointer-events: auto; /* Add this */
 }
 
 .thumbnail {
@@ -42,9 +41,8 @@ body {
     border-radius: 8px;
     filter: brightness(0.3);
     object-fit: cover;
-    position: relative;
-    pointer-events: auto; /* Add this */
-    will-change: transform, filter; /* Add this */
+    transition: all 0.3s ease;
+    will-change: transform, filter;
 }
 
 /* Add these new styles */
