@@ -1,45 +1,50 @@
+// Update these values at the top of script.js
 const thumbnailsContainer = document.querySelector('.thumbnails-container');
 const numRows = 4;
 const thumbnailsPerRow = 5;
 const gap = 20;
 
+// Update the thumbnail ranges to properly use all 43 images
 const thumbnailRanges = [
-    { start: 0, end: 10 },
-    { start: 11, end: 21 },
-    { start: 22, end: 32 },
-    { start: 33, end: 43 }
+    { start: 0, end: 10 },   // First row: 0-10 (11 thumbnails)
+    { start: 11, end: 21 },  // Second row: 11-21 (11 thumbnails)
+    { start: 22, end: 32 },  // Third row: 22-32 (11 thumbnails)
+    { start: 33, end: 43 }   // Fourth row: 33-43 (11 thumbnails)
 ];
-// In your script.js, replace the event listener section with this:
+
+// Initialize thumbnails
 for (let i = 0; i < numRows; i++) {
     const row = document.createElement('div');
     row.className = 'thumbnail-row';
-    row.style.top = `${i * (180 + gap)}px`;
+    row.style.top = `${i * (180 + gap)}px`; // Height + gap
     row.style.animation = `scroll${i % 2 === 0 ? 'Left' : 'Right'} ${100 + i * 10}s linear infinite`;
     
     const range = thumbnailRanges[i];
     
-    for (let j = 0; j < 2; j++) {
+    // Create the thumbnails for this row
+    for (let j = 0; j < 2; j++) { // Double the content for infinite scroll
         for (let k = range.start; k <= range.end; k++) {
             const img = document.createElement('img');
             img.src = `thumbnails/youtube_thumbnail_maxres${k ? ` (${k})` : ''}.jpg`;
             img.className = 'thumbnail';
             img.alt = 'Video Thumbnail';
+            img.loading = 'lazy'; // Add lazy loading
             
-            // New event listener approach
-            img.onmouseenter = function() {
+            // Event listeners
+            img.addEventListener('mouseenter', function() {
                 this.style.setProperty('filter', 'brightness(0.9)', 'important');
                 this.style.setProperty('transform', 'scale(1.1)', 'important');
                 this.style.setProperty('z-index', '100', 'important');
-            };
+            });
 
-            img.onmouseleave = function() {
+            img.addEventListener('mouseleave', function() {
                 const self = this;
                 self.style.setProperty('transform', 'scale(1)', 'important');
                 self.style.setProperty('z-index', '1', 'important');
                 setTimeout(() => {
                     self.style.setProperty('filter', 'brightness(0.3)', 'important');
                 }, 3000);
-            };
+            });
 
             row.appendChild(img);
         }
@@ -70,187 +75,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         });
     });
 });
-// Add this to script.js
-// Update the jobDetails object with more roles
-const jobDetails = {
-    "3D Designer": {
-        location: "Indianapolis, IN",
-        overview: "Join our creative team to design and create stunning 3D visuals for our content.",
-        responsibilities: [
-            "Create high-quality 3D models and animations",
-            "Collaborate with content creators and producers",
-            "Maintain consistent design standards",
-            "Meet quick turnaround times while maintaining quality"
-        ],
-        qualifications: [
-            "3+ years of professional 3D design experience",
-            "Proficiency in industry-standard 3D software",
-            "Strong portfolio demonstrating creative work",
-            "Experience with real-time rendering"
-        ],
-        additionalSkills: [
-            "Experience with motion graphics",
-            "Knowledge of VFX pipelines",
-            "Game engine experience (Unreal/Unity)",
-            "Understanding of YouTube content creation"
-        ]
-    },
-    "Assistant Editor": {
-        location: "Indianapolis, IN",
-        overview: "Support our editing team in creating engaging content that reaches millions.",
-        responsibilities: [
-            "Edit video content under senior editor guidance",
-            "Manage and organize media assets",
-            "Assist in sound mixing and color correction",
-            "Maintain project organization and workflow"
-        ],
-        qualifications: [
-            "2+ years video editing experience",
-            "Proficiency in Adobe Premiere Pro",
-            "Strong organizational skills",
-            "Ability to meet tight deadlines"
-        ],
-        additionalSkills: [
-            "After Effects knowledge",
-            "Sound design experience",
-            "Color grading skills",
-            "Experience with large media databases"
-        ]
-    },
-    "Camera Operator/Camera Team Producer": {
-        location: "Indianapolis, IN",
-        overview: "Lead and execute high-quality video production for our dynamic content.",
-        responsibilities: [
-            "Operate professional camera equipment",
-            "Coordinate with production team",
-            "Manage camera department workflow",
-            "Ensure technical quality of footage"
-        ],
-        qualifications: [
-            "5+ years camera operation experience",
-            "Experience with professional cinema cameras",
-            "Strong understanding of lighting and composition",
-            "Team leadership experience"
-        ],
-        additionalSkills: [
-            "Drone operation certification",
-            "Experience with live production",
-            "Technical troubleshooting skills",
-            "Knowledge of latest camera technology"
-        ]
-    },
-    "Casting Producer": {
-        location: "Indianapolis, IN",
-        overview: "Find and manage talent for our innovative content productions.",
-        responsibilities: [
-            "Source and screen potential cast members",
-            "Conduct interviews and auditions",
-            "Manage talent database",
-            "Coordinate with production team"
-        ],
-        qualifications: [
-            "3+ years casting experience",
-            "Strong network of contacts",
-            "Excellent communication skills",
-            "Experience with talent management"
-        ],
-        additionalSkills: [
-            "Background in production",
-            "Experience with diversity initiatives",
-            "Knowledge of talent contracts",
-            "Social media savvy"
-        ]
-    },
-    "Concept Artist": {
-        location: "Indianapolis, IN",
-        overview: "Create compelling visual concepts for our innovative content.",
-        responsibilities: [
-            "Develop visual concepts for videos",
-            "Create storyboards and mood boards",
-            "Collaborate with production team",
-            "Maintain consistent visual style"
-        ],
-        qualifications: [
-            "4+ years concept art experience",
-            "Strong portfolio of work",
-            "Proficiency in digital art tools",
-            "Understanding of production pipeline"
-        ],
-        additionalSkills: [
-            "3D modeling knowledge",
-            "Traditional art background",
-            "Animation experience",
-            "VFX understanding"
-        ]
-    },
-    "Creative": {
-        location: "Indianapolis, IN",
-        overview: "Generate innovative ideas and concepts for viral content.",
-        responsibilities: [
-            "Develop creative concepts for videos",
-            "Write scripts and treatments",
-            "Collaborate with production team",
-            "Research trends and opportunities"
-        ],
-        qualifications: [
-            "Proven track record of creative success",
-            "Strong writing skills",
-            "Understanding of viral content",
-            "Experience in content creation"
-        ],
-        additionalSkills: [
-            "Video editing skills",
-            "Social media expertise",
-            "Photography experience",
-            "Project management ability"
-        ]
-    },
-    "Creative Producer": {
-        location: "Indianapolis, IN",
-        overview: "Lead the creative direction and execution of innovative content projects.",
-        responsibilities: [
-            "Oversee content development",
-            "Manage production timeline",
-            "Lead creative team",
-            "Ensure content quality"
-        ],
-        qualifications: [
-            "5+ years production experience",
-            "Team leadership experience",
-            "Strong creative vision",
-            "Budget management skills"
-        ],
-        additionalSkills: [
-            "Marketing knowledge",
-            "Script writing ability",
-            "Video editing skills",
-            "Experience with YouTube"
-        ]
-    },
-    "Field Recording Mixer": {
-        location: "Indianapolis, IN",
-        overview: "Capture high-quality audio for our dynamic video content.",
-        responsibilities: [
-            "Record location sound",
-            "Manage audio equipment",
-            "Mix live audio",
-            "Maintain audio quality standards"
-        ],
-        qualifications: [
-            "3+ years professional audio experience",
-            "Proficiency with professional audio equipment",
-            "Understanding of audio post-production",
-            "Problem-solving skills"
-        ],
-        additionalSkills: [
-            "Music production experience",
-            "Post-production mixing skills",
-            "Equipment maintenance knowledge",
-            "Experience in live events"
-        ]
-    }
-};
 
+// Job details data
+const jobDetails = { "3D Designer": { location: "Indianapolis, IN", overview: "Join our creative team to design and create stunning 3D visuals for our content.", responsibilities: [ "Create high-quality 3D models and animations", "Collaborate with content creators and producers", "Maintain consistent design standards", "Meet quick turnaround times while maintaining quality" ], qualifications: [ "3+ years of professional 3D design experience", "Proficiency in industry-standard 3D software", "Strong portfolio demonstrating creative work", "Experience with real-time rendering" ], additionalSkills: [ "Experience with motion graphics", "Knowledge of VFX pipelines", "Game engine experience (Unreal/Unity)", "Understanding of YouTube content creation" ] }, "Assistant Editor": { location: "Indianapolis, IN", overview: "Support our editing team in creating engaging content that reaches millions.", responsibilities: [ "Edit video content under senior editor guidance", "Manage and organize media assets", "Assist in sound mixing and color correction", "Maintain project organization and workflow" ], qualifications: [ "2+ years video editing experience", "Proficiency in Adobe Premiere Pro", "Strong organizational skills", "Ability to meet tight deadlines" ], additionalSkills: [ "After Effects knowledge", "Sound design experience", "Color grading skills", "Experience with large media databases" ] }, "Camera Operator/Camera Team Producer": { location: "Indianapolis, IN", overview: "Lead and execute high-quality video production for our dynamic content.", responsibilities: [ "Operate professional camera equipment", "Coordinate with production team", "Manage camera department workflow", "Ensure technical quality of footage" ], qualifications: [ "5+ years camera operation experience", "Experience with professional cinema cameras", "Strong understanding of lighting and composition", "Team leadership experience" ], additionalSkills: [ "Drone operation certification", "Experience with live production", "Technical troubleshooting skills", "Knowledge of latest camera technology" ] }, "Casting Producer": { location: "Indianapolis, IN", overview: "Find and manage talent for our innovative content productions.", responsibilities: [ "Source and screen potential cast members", "Conduct interviews and auditions", "Manage talent database", "Coordinate with production team" ], qualifications: [ "3+ years casting experience", "Strong network of contacts", "Excellent communication skills", "Experience with talent management" ], additionalSkills: [ "Background in production", "Experience with diversity initiatives", "Knowledge of talent contracts", "Social media savvy" ] }, "Concept Artist": { location: "Indianapolis, IN", overview: "Create compelling visual concepts for our innovative content.", responsibilities: [ "Develop visual concepts for videos", "Create storyboards and mood boards", "Collaborate with production team", "Maintain consistent visual style" ], qualifications: [ "4+ years concept art experience", "Strong portfolio of work", "Proficiency in digital art tools", "Understanding of production pipeline" ], additionalSkills: [ "3D modeling knowledge", "Traditional art background", "Animation experience", "VFX understanding" ] }, "Creative": { location: "Indianapolis, IN", overview: "Generate innovative ideas and concepts for viral content.", responsibilities: [ "Develop creative concepts for videos", "Write scripts and treatments", "Collaborate with production team", "Research trends and opportunities" ], qualifications: [ "Proven track record of creative success", "Strong writing skills", "Understanding of viral content", "Experience in content creation" ], additionalSkills: [ "Video editing skills", "Social media expertise", "Photography experience", "Project management ability" ] }, "Creative Producer": { location: "Indianapolis, IN", overview: "Lead the creative direction and execution of innovative content projects.", responsibilities: [ "Oversee content development", "Manage production timeline", "Lead creative team", "Ensure content quality" ], qualifications: [ "5+ years production experience", "Team leadership experience", "Strong creative vision", "Budget management skills" ], additionalSkills: [ "Marketing knowledge", "Script writing ability", "Video editing skills", "Experience with YouTube" ] }, "Field Recording Mixer": { location: "Indianapolis, IN", overview: "Capture high-quality audio for our dynamic video content.", responsibilities: [ "Record location sound", "Manage audio equipment", "Mix live audio", "Maintain audio quality standards" ], qualifications: [ "3+ years professional audio experience", "Proficiency with professional audio equipment", "Understanding of audio post-production", "Problem-solving skills" ], additionalSkills: [ "Music production experience", "Post-production mixing skills", "Equipment maintenance knowledge", "Experience in live events" ] } };
+
+// Modal creation and management
 function createApplicationModal() {
     const modalHTML = `
         <div class="application-modal">
@@ -283,7 +112,7 @@ function createApplicationModal() {
                 <div class="application-form-side">
                     <span class="close-btn">&times;</span>
                     <h2>Submit Your Application</h2>
-                    <form id="application-form">
+                    <form id="application-form" action="https://formspree.io/f/xjkvkqka" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="role" id="role-input">
                         
                         <div class="form-group">
@@ -317,7 +146,7 @@ function createApplicationModal() {
                         </div>
                         
                         <div class="form-group">
-                            <label for="additional-info">Do you have any questions for us?</label>
+                            <label for="additional-info">Why do you want to join our team? *</label>
                             <textarea id="additional-info" name="additional-info" rows="5" required></textarea>
                         </div>
                         
@@ -354,25 +183,19 @@ function populateJobDetails(roleTitle) {
         .join('');
 }
 
-// Function to show modal
 function showApplicationModal(roleTitle) {
     let modal = document.querySelector('.application-modal');
     
-    // Create modal if it doesn't exist
     if (!modal) {
         createApplicationModal();
         modal = document.querySelector('.application-modal');
         
-        // Add close button functionality
         modal.querySelector('.close-btn').addEventListener('click', () => {
             modal.style.display = 'none';
         });
     }
     
-    // Populate job details
     populateJobDetails(roleTitle);
-    
-    // Show modal
     modal.style.display = 'flex';
 }
 
@@ -396,14 +219,28 @@ window.addEventListener('click', (e) => {
 document.addEventListener('submit', async (e) => {
     if (e.target.id === 'application-form') {
         e.preventDefault();
-        const formData = new FormData(e.target);
+        
+        const form = e.target;
+        const formData = new FormData(form);
         
         try {
-            // For now, just show success message
-            alert('Application submitted successfully!');
-            document.querySelector('.application-modal').style.display = 'none';
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                alert('Application submitted successfully! We will be in touch soon.');
+                document.querySelector('.application-modal').style.display = 'none';
+                form.reset();
+            } else {
+                throw new Error('Failed to submit application');
+            }
         } catch (error) {
-            alert('Error submitting application. Please try again.');
+            alert('Error submitting application. Please try again or contact us directly.');
         }
     }
 });
