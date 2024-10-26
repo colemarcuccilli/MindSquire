@@ -266,7 +266,9 @@ function createApplicationModal() {
                         action="https://formspree.io/f/xwpkvvyq"
                         method="POST"
                         enctype="multipart/form-data"
+                        accept-charset="UTF-8"
                     >
+                        <input type="hidden" name="_subject" value="New job application">
                         <input type="hidden" name="role" id="role-input">
                         
                         <div class="form-group">
@@ -313,7 +315,7 @@ function createApplicationModal() {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
-// Populate job details
+// Modal management functions
 function populateJobDetails(roleTitle) {
     const details = jobDetails[roleTitle];
     if (!details) return;
@@ -341,17 +343,23 @@ function populateJobDetails(roleTitle) {
         details.additionalSkills.map(item => `<li>${item}</li>`).join('');
 }
 
-// Show application modal
 function showApplicationModal(roleTitle) {
+    // First create/update the modal
     populateJobDetails(roleTitle);
+    
+    // Then find it and show it
     const modal = document.querySelector('.application-modal');
-    
-    // Add close button functionality
-    modal.querySelector('.close-btn').addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-    
-    modal.style.display = 'flex';
+    if (modal) {
+        // Add close button functionality
+        const closeBtn = modal.querySelector('.close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        
+        modal.style.display = 'flex';
+    }
 }
 
 // Add click handlers to role cards
@@ -369,7 +377,6 @@ window.addEventListener('click', (e) => {
         modal.style.display = 'none';
     }
 });
-
 // Handle form submission
 document.addEventListener('submit', async (e) => {
     if (e.target.id === 'application-form') {
@@ -379,12 +386,19 @@ document.addEventListener('submit', async (e) => {
         const formData = new FormData(form);
         
         try {
+            // Add loading state
+            const submitButton = form.querySelector('.submit-btn');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
+
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
                 headers: {
                     'Accept': 'application/json'
-                }
+                },
+                mode: 'cors',
+                credentials: 'same-origin'
             });
             
             if (response.ok) {
@@ -392,10 +406,17 @@ document.addEventListener('submit', async (e) => {
                 document.querySelector('.application-modal').style.display = 'none';
                 form.reset();
             } else {
-                throw new Error('Failed to submit application');
+                const data = await response.json();
+                throw new Error(data.error || 'Failed to submit application');
             }
         } catch (error) {
-            alert('Error submitting application. Please try again or contact us directly.');
+            console.error('Form submission error:', error);
+            alert('Error submitting application. Please try again or contact us directly at mindsquirejobs@gmail.com');
+        } finally {
+            // Reset button state
+            const submitButton = form.querySelector('.submit-btn');
+            submitButton.disabled = false;
+            submitButton.textContent = 'Submit Application';
         }
     }
 });
