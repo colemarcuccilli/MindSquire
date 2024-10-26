@@ -178,9 +178,12 @@ body {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Changed from 3 to 2 */
     gap: 30px;
-    margin-bottom: 60px; /* Add space between stats and hiring box */
+    margin-bottom: 60px;
+    max-width: 800px; /* Added to center the two cards */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .stat-card {

@@ -1,36 +1,35 @@
-// Update these values at the top of script.js
+// Initialize thumbnail variables
 const thumbnailsContainer = document.querySelector('.thumbnails-container');
 const numRows = 4;
 const thumbnailsPerRow = 5;
 const gap = 20;
 
-// Update the thumbnail ranges to properly use all 43 images
+// Thumbnail ranges
 const thumbnailRanges = [
-    { start: 0, end: 10 },   // First row: 0-10 (11 thumbnails)
-    { start: 11, end: 21 },  // Second row: 11-21 (11 thumbnails)
-    { start: 22, end: 32 },  // Third row: 22-32 (11 thumbnails)
-    { start: 33, end: 43 }   // Fourth row: 33-43 (11 thumbnails)
+    { start: 0, end: 10 },
+    { start: 11, end: 21 },
+    { start: 22, end: 32 },
+    { start: 33, end: 43 }
 ];
 
 // Initialize thumbnails
 for (let i = 0; i < numRows; i++) {
     const row = document.createElement('div');
     row.className = 'thumbnail-row';
-    row.style.top = `${i * (180 + gap)}px`; // Height + gap
+    row.style.top = `${i * (180 + gap)}px`;
     row.style.animation = `scroll${i % 2 === 0 ? 'Left' : 'Right'} ${100 + i * 10}s linear infinite`;
     
     const range = thumbnailRanges[i];
     
-    // Create the thumbnails for this row
-    for (let j = 0; j < 2; j++) { // Double the content for infinite scroll
+    // Create thumbnails for this row
+    for (let j = 0; j < 2; j++) {
         for (let k = range.start; k <= range.end; k++) {
             const img = document.createElement('img');
             img.src = `thumbnails/youtube_thumbnail_maxres${k ? ` (${k})` : ''}.jpg`;
             img.className = 'thumbnail';
             img.alt = 'Video Thumbnail';
-            img.loading = 'lazy'; // Add lazy loading
+            img.loading = 'lazy';
             
-            // Event listeners
             img.addEventListener('mouseenter', function() {
                 this.style.setProperty('filter', 'brightness(0.9)', 'important');
                 this.style.setProperty('transform', 'scale(1.1)', 'important');
@@ -77,16 +76,166 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Job details data
-const jobDetails = { "3D Designer": { location: "Indianapolis, IN", overview: "Join our creative team to design and create stunning 3D visuals for our content.", responsibilities: [ "Create high-quality 3D models and animations", "Collaborate with content creators and producers", "Maintain consistent design standards", "Meet quick turnaround times while maintaining quality" ], qualifications: [ "3+ years of professional 3D design experience", "Proficiency in industry-standard 3D software", "Strong portfolio demonstrating creative work", "Experience with real-time rendering" ], additionalSkills: [ "Experience with motion graphics", "Knowledge of VFX pipelines", "Game engine experience (Unreal/Unity)", "Understanding of YouTube content creation" ] }, "Assistant Editor": { location: "Indianapolis, IN", overview: "Support our editing team in creating engaging content that reaches millions.", responsibilities: [ "Edit video content under senior editor guidance", "Manage and organize media assets", "Assist in sound mixing and color correction", "Maintain project organization and workflow" ], qualifications: [ "2+ years video editing experience", "Proficiency in Adobe Premiere Pro", "Strong organizational skills", "Ability to meet tight deadlines" ], additionalSkills: [ "After Effects knowledge", "Sound design experience", "Color grading skills", "Experience with large media databases" ] }, "Camera Operator/Camera Team Producer": { location: "Indianapolis, IN", overview: "Lead and execute high-quality video production for our dynamic content.", responsibilities: [ "Operate professional camera equipment", "Coordinate with production team", "Manage camera department workflow", "Ensure technical quality of footage" ], qualifications: [ "5+ years camera operation experience", "Experience with professional cinema cameras", "Strong understanding of lighting and composition", "Team leadership experience" ], additionalSkills: [ "Drone operation certification", "Experience with live production", "Technical troubleshooting skills", "Knowledge of latest camera technology" ] }, "Casting Producer": { location: "Indianapolis, IN", overview: "Find and manage talent for our innovative content productions.", responsibilities: [ "Source and screen potential cast members", "Conduct interviews and auditions", "Manage talent database", "Coordinate with production team" ], qualifications: [ "3+ years casting experience", "Strong network of contacts", "Excellent communication skills", "Experience with talent management" ], additionalSkills: [ "Background in production", "Experience with diversity initiatives", "Knowledge of talent contracts", "Social media savvy" ] }, "Concept Artist": { location: "Indianapolis, IN", overview: "Create compelling visual concepts for our innovative content.", responsibilities: [ "Develop visual concepts for videos", "Create storyboards and mood boards", "Collaborate with production team", "Maintain consistent visual style" ], qualifications: [ "4+ years concept art experience", "Strong portfolio of work", "Proficiency in digital art tools", "Understanding of production pipeline" ], additionalSkills: [ "3D modeling knowledge", "Traditional art background", "Animation experience", "VFX understanding" ] }, "Creative": { location: "Indianapolis, IN", overview: "Generate innovative ideas and concepts for viral content.", responsibilities: [ "Develop creative concepts for videos", "Write scripts and treatments", "Collaborate with production team", "Research trends and opportunities" ], qualifications: [ "Proven track record of creative success", "Strong writing skills", "Understanding of viral content", "Experience in content creation" ], additionalSkills: [ "Video editing skills", "Social media expertise", "Photography experience", "Project management ability" ] }, "Creative Producer": { location: "Indianapolis, IN", overview: "Lead the creative direction and execution of innovative content projects.", responsibilities: [ "Oversee content development", "Manage production timeline", "Lead creative team", "Ensure content quality" ], qualifications: [ "5+ years production experience", "Team leadership experience", "Strong creative vision", "Budget management skills" ], additionalSkills: [ "Marketing knowledge", "Script writing ability", "Video editing skills", "Experience with YouTube" ] }, "Field Recording Mixer": { location: "Indianapolis, IN", overview: "Capture high-quality audio for our dynamic video content.", responsibilities: [ "Record location sound", "Manage audio equipment", "Mix live audio", "Maintain audio quality standards" ], qualifications: [ "3+ years professional audio experience", "Proficiency with professional audio equipment", "Understanding of audio post-production", "Problem-solving skills" ], additionalSkills: [ "Music production experience", "Post-production mixing skills", "Equipment maintenance knowledge", "Experience in live events" ] } };
+const jobDetails = {
+    "Assistant Editor": {
+        overview: "We are looking for a motivated video editor to work in the earlier stages of the editing process. This role will start post production off on the right track. This role focuses less on complex editing techniques, and focuses more on shaping the story, ordering segments, and creating an entertaining YouTube video!",
+        responsibilities: [
+            "Responsible for transforming raw footage into rough draft cuts",
+            "Synching, Cutting, Optimizing, Ordering, ETC.",
+            "Organizing Premiere Pro project",
+            "Work alongside us during the edit to ensure the video is heading in the right direction",
+            "Responsibilities will expand over time"
+        ],
+        qualifications: [
+            "Fluent and experienced in Premiere Pro",
+            "Great Communicator",
+            "Watches and loves YouTube",
+            "Wants to work long term and believes in the vision of our channel",
+            "Want to grow their editing skills and social media knowledge"
+        ],
+        additionalSkills: [
+            "Detail Oriented",
+            "Organizational Skills",
+            "Great sense of humor",
+            "Must be 18+ and fluent in English"
+        ]
+    },
+    "GFX / Sound Design Editor": {
+        overview: "We are looking for an experienced video editor to help us turn a rough cut into a polished, high-quality video. Attention to detail is essential, as we need someone who values precision in every aspect of editing. If you're skilled in creating clean, professional looking graphics and have a talent for crafting amazing, captivating sound design, this role is perfect for you!",
+        responsibilities: [
+            "Responsible for turning a rough cut video into a finished product",
+            "Graphics, Sound design, Captions, Framing, ETC.",
+            "Responsibilities will expand over time"
+        ],
+        qualifications: [
+            "Fluent and experienced in Premiere Pro and preferably After Effects",
+            "Great Communicator",
+            "Watches and loves YouTube",
+            "Wants to work long term and believes in the vision of our channel",
+            "Wants to grow their editing skills and social media knowledge"
+        ],
+        additionalSkills: [
+            "Very Detail Oriented",
+            "Organizational Skills",
+            "Great sense of humor",
+            "Must be 18+ and fluent in English"
+        ]
+    },
+    "Creative Producer": {
+        overview: "We are looking for a creative, funny, and motivated person to help us plan and produce the best videos we possibly can. We need someone who is great at coming up with ideas, as well as helping execute them, and staying organized.",
+        responsibilities: [
+            "Collaborate with us and our team to help plan and produce an entire video",
+            "Creatively brainstorm and help plan each part of our videos",
+            "Segment Ideas, Video Structure, Funny Ideas, Jokes, ETC.",
+            "Find people, props, locations, and anything that will be needed for each video"
+        ],
+        qualifications: [
+            "EXCELLENT Communicator",
+            "Comfortable with talking to strangers (phone calls, etc.)",
+            "LOVES YouTube. Watches it alot, or experience working on videos",
+            "Leadership qualities",
+            "Wants to work long term and believes in the vision of our channel"
+        ],
+        additionalSkills: [
+            "Detail Oriented",
+            "Organizational Skills",
+            "Great sense of humor",
+            "Must be 18+ and fluent in English"
+        ]
+    },
+    "Head of Short Form Content": {
+        overview: "We need someone to manage and oversee all of our short form content. You will help create short form content to be posted on all platforms (YouTube Shorts, TikTok, Instagram).",
+        responsibilities: [
+            "Ideate and plan original short form content ideas",
+            "Turn our long form videos into multiple short form videos (via editing)",
+            "Manage and train short form editors",
+            "Post and manage accounts"
+        ],
+        qualifications: [
+            "Fluent and experienced in Premiere Pro",
+            "Knowledgeable in short form content",
+            "Great Communicator",
+            "Leadership qualities",
+            "Creative"
+        ],
+        additionalSkills: [
+            "Stays up to date with short form content and trends",
+            "Detail Oriented",
+            "Organizational Skills",
+            "Great sense of humor",
+            "Must be 18+ and fluent in English"
+        ]
+    },
+    "Short Form Editor": {
+        overview: "Responsible for editing short form videos for MindSquire accounts (YT Shorts, TikTok, Instagram)",
+        responsibilities: [
+            "Turn horizontal long form videos into 60 second vertical clips",
+            "Caption videos",
+            "Add Sound design",
+            "Optimize long form footage for short form"
+        ],
+        qualifications: [
+            "Fluent and experienced in Premiere Pro",
+            "Understanding of short form content",
+            "Great Communicator",
+            "Detail Oriented"
+        ],
+        additionalSkills: [
+            "Sound design experience",
+            "Social media knowledge",
+            "Great sense of humor",
+            "Must be 18+ and fluent in English"
+        ]
+    },
+    "Head of Operations": {
+        overview: "This is arguably the most important role we are needing to fill. We're looking for someone to join our team as a key member. You will eventually help run various operations that go into growing our YouTube channel. You will be trained over a LONG period of time in every aspect of our business - from what makes a good thumbnail, to BTS business, to storytelling and retention.",
+        responsibilities: [
+            "Learn and manage all aspects of YouTube operations",
+            "Develop strategies for channel growth",
+            "Oversee content planning and execution",
+            "Manage team workflows and processes"
+        ],
+        qualifications: [
+            "Wants to learn as much as possible about YouTube, business, and creating content",
+            "Wants to dedicate their time to helping run our YouTube channel",
+            "Strong leadership and communication skills",
+            "Passionate about content creation"
+        ],
+        additionalSkills: [
+            "Project management experience",
+            "Strategic thinking",
+            "Adaptable and eager to learn",
+            "Must be 18+ and fluent in English"
+        ]
+    },
+    "Open Application": {
+        overview: "If you think you have a special set of skills that would be beneficial to our content, but you don't see a role currently listed that fits your background, we'd love to hear from you! Tell us about your unique talents and how you could contribute to our team.",
+        responsibilities: [
+            "To be defined based on your unique skills and our needs",
+            "Opportunity to create and shape your own role",
+            "Contribute to channel growth in your area of expertise"
+        ],
+        qualifications: [
+            "Passion for YouTube content creation",
+            "Strong communication skills",
+            "Self-motivated and proactive",
+            "Creative problem solver"
+        ],
+        additionalSkills: [
+            "Any relevant skills or experience",
+            "Must be 18+ and fluent in English",
+            "Willingness to learn and grow with the team"
+        ]
+    }
+};
 
-// Modal creation and management
+// Create application modal
 function createApplicationModal() {
     const modalHTML = `
         <div class="application-modal">
             <div class="application-container">
                 <div class="job-details-side">
                     <h2 class="role-title-display"></h2>
-                    <p class="job-location"><i class="fas fa-map-marker-alt"></i> <span class="location-display"></span></p>
                     
                     <div class="job-section">
                         <h3>Overview</h3>
@@ -112,7 +261,12 @@ function createApplicationModal() {
                 <div class="application-form-side">
                     <span class="close-btn">&times;</span>
                     <h2>Submit Your Application</h2>
-                    <form id="application-form" action="https://formspree.io/f/xjkvkqka" method="POST" enctype="multipart/form-data">
+                    <form 
+                        id="application-form" 
+                        action="https://formspree.io/f/xwpkvvyq"
+                        method="POST"
+                        enctype="multipart/form-data"
+                    >
                         <input type="hidden" name="role" id="role-input">
                         
                         <div class="form-group">
@@ -159,43 +313,44 @@ function createApplicationModal() {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
+// Populate job details
 function populateJobDetails(roleTitle) {
     const details = jobDetails[roleTitle];
     if (!details) return;
 
+    // Remove any existing modal
+    const existingModal = document.querySelector('.application-modal');
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    // Create new modal and populate
+    createApplicationModal();
+    
     document.querySelector('.role-title-display').textContent = roleTitle;
-    document.querySelector('.location-display').textContent = details.location;
     document.querySelector('.overview-display').textContent = details.overview;
+    document.querySelector('#role-input').value = roleTitle;
 
-    const responsibilitiesList = document.querySelector('.responsibilities-list');
-    responsibilitiesList.innerHTML = details.responsibilities
-        .map(item => `<li>${item}</li>`)
-        .join('');
-
-    const qualificationsList = document.querySelector('.qualifications-list');
-    qualificationsList.innerHTML = details.qualifications
-        .map(item => `<li>${item}</li>`)
-        .join('');
-
-    const additionalSkillsList = document.querySelector('.additional-skills-list');
-    additionalSkillsList.innerHTML = details.additionalSkills
-        .map(item => `<li>${item}</li>`)
-        .join('');
+    document.querySelector('.responsibilities-list').innerHTML = 
+        details.responsibilities.map(item => `<li>${item}</li>`).join('');
+    
+    document.querySelector('.qualifications-list').innerHTML = 
+        details.qualifications.map(item => `<li>${item}</li>`).join('');
+    
+    document.querySelector('.additional-skills-list').innerHTML = 
+        details.additionalSkills.map(item => `<li>${item}</li>`).join('');
 }
 
+// Show application modal
 function showApplicationModal(roleTitle) {
-    let modal = document.querySelector('.application-modal');
-    
-    if (!modal) {
-        createApplicationModal();
-        modal = document.querySelector('.application-modal');
-        
-        modal.querySelector('.close-btn').addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-    }
-    
     populateJobDetails(roleTitle);
+    const modal = document.querySelector('.application-modal');
+    
+    // Add close button functionality
+    modal.querySelector('.close-btn').addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+    
     modal.style.display = 'flex';
 }
 
