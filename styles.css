@@ -448,19 +448,23 @@ body {
 }
 
 /* Mobile Layout */
-@media (max-width: 768px) {
+/* Add these stronger mobile styles */
+@media screen and (max-width: 768px) {
     .application-container {
-        flex-direction: column;
-        height: auto;
-        max-height: 90vh;
-        overflow-y: auto;
+        flex-direction: column !important;
+        height: auto !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
     }
 
     .job-details-side,
     .application-form-side {
-        width: 100%;
-        height: auto;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding: 20px !important;
     }
+}
 
     .job-details-side {
         border-right: none;
@@ -632,4 +636,18 @@ body {
     color: #ccc;
     margin-bottom: 12px;
     line-height: 1.5;
+}
+
+.footer-contact {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.footer-contact:hover {
+    color: #ff8800;
+    transform: translateY(-2px);
 }
