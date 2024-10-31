@@ -291,6 +291,10 @@ function createApplicationModal() {
                             <input type="url" id="portfolio" name="portfolio">
                         </div>
                         <div class="form-group">
+                            <label for="social handles">Social Media Handles</label>
+                            <input type="url" id="social handles" name="social handles">
+                        </div>
+                        <div class="form-group">
                             <label for="resume">Resume/CV *</label>
                             <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
                         </div>
@@ -302,7 +306,7 @@ function createApplicationModal() {
                         
                         
                         <div class="form-group">
-                            <label for="additional-info">Why do you want to join our team? *</label>
+                            <label for="additional-info">Why do you want to join our team? What Makes you a Great Candidate?</label>
                             <textarea id="additional-info" name="additional-info" rows="5" required></textarea>
                         </div>
                         
