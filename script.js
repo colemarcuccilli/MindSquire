@@ -80,7 +80,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Job details data
 const jobDetails = {
     "Assistant Editor": {
-        overview: "We are looking for a motivated video editor to work in the earlier stages of the editing process. This role will start post production off on the right track. This role focuses less on complex editing techniques, and focuses more on shaping the story, ordering segments, and creating an entertaining YouTube video!",
+        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout The Role:\n\nWe are looking for a motivated video editor to work in the earlier stages of the editing process. This role will start post production off on the right track. This role focuses less on complex editing techniques, and focuses more on shaping the story, ordering segments, and creating an entertaining YouTube video!",
         responsibilities: [
             "Responsible for transforming raw footage into rough draft cuts",
             "Synching, Cutting, Optimizing, Ordering, ETC.",
@@ -88,144 +88,119 @@ const jobDetails = {
             "Work alongside us during the edit to ensure the video is heading in the right direction",
             "Responsibilities will expand over time"
         ],
-        qualifications: [
+        idealCandidate: [
             "Fluent and experienced in Premiere Pro",
             "Great Communicator",
             "Watches and loves YouTube",
             "Wants to work long term and believes in the vision of our channel",
-            "Want to grow their editing skills and social media knowledge"
-        ],
-        additionalSkills: [
+            "Want to grow their editing skills and social media knowledge",
             "Detail Oriented",
             "Organizational Skills",
-            "Great sense of humor",
-            "Must be 18+ and fluent in English"
+            "Great sense of humor"
         ]
     },
     "GFX / Sound Design Editor": {
-        overview: "We are looking for an experienced video editor to help us turn a rough cut into a polished, high-quality video. Attention to detail is essential, as we need someone who values precision in every aspect of editing. If you're skilled in creating clean, professional looking graphics and have a talent for crafting amazing, captivating sound design, this role is perfect for you!",
+        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout The Role:\n\nWe are looking for an experienced video editor to help us turn a rough cut into a polished, high-quality video. Attention to detail is essential, as we need someone who values precision in every aspect of editing. If you're skilled in creating clean, professional looking graphics and have a talent for crafting amazing, captivating sound design, this role is perfect for you!",
         responsibilities: [
             "Responsible for turning a rough cut video into a finished product",
             "Graphics, Sound design, Captions, Framing, ETC.",
             "Responsibilities will expand over time"
         ],
-        qualifications: [
+        idealCandidate: [
             "Fluent and experienced in Premiere Pro and preferably After Effects",
             "Great Communicator",
             "Watches and loves YouTube",
             "Wants to work long term and believes in the vision of our channel",
-            "Wants to grow their editing skills and social media knowledge"
-        ],
-        additionalSkills: [
+            "Wants to grow their editing skills and social media knowledge",
             "Very Detail Oriented",
             "Organizational Skills",
-            "Great sense of humor",
-            "Must be 18+ and fluent in English"
+            "Great sense of humor"
         ]
     },
     "Creative Producer": {
-        overview: "We are looking for a creative, funny, and motivated person to help us plan and produce the best videos we possibly can. We need someone who is great at coming up with ideas, as well as helping execute them, and staying organized.",
+        overview: "Remote or in Person Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout this role:\n\nWe are looking for a creative, funny, and motivated person to help us plan and produce the best videos we possibly can. We need someone who is great at coming up with ideas, as well as helping execute them, and staying organized. If you are someone who possesses these traits, this role is a great fit for you!",
         responsibilities: [
             "Collaborate with us and our team to help plan and produce an entire video",
-            "Creatively brainstorm and help plan each part of our videos",
-            "Segment Ideas, Video Structure, Funny Ideas, Jokes, ETC.",
+            "Creatively brainstorm and help plan each part of our videos. These include 'Segment Ideas, Video Structure, Funny Ideas, Jokes, etc.' to enhance the detail and creativity of each video",
             "Find people, props, locations, and anything that will be needed for each video"
         ],
-        qualifications: [
+        idealCandidate: [
             "EXCELLENT Communicator",
             "Comfortable with talking to strangers (phone calls, etc.)",
-            "LOVES YouTube. Watches it alot, or experience working on videos",
+            "LOVES YouTube. Watches it a lot, or experience working on videos",
             "Leadership qualities",
-            "Wants to work long term and believes in the vision of our channel"
-        ],
-        additionalSkills: [
+            "Wants to work long term and believes in the vision of our channel",
+            "Wants to grow their video creation skills and social media knowledge",
             "Detail Oriented",
             "Organizational Skills",
-            "Great sense of humor",
-            "Must be 18+ and fluent in English"
+            "Great sense of humor"
         ]
     },
     "Head of Short Form Content": {
-        overview: "We need someone to manage and oversee all of our short form content. You will help create short form content to be posted on all platforms (YouTube Shorts, TikTok, Instagram).",
+        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout the role:\n\nWe need someone to manage and oversee all of our short form content. You will help create short form content to be posted on all platforms (YouTube Shorts, TikTok, Instagram).",
         responsibilities: [
             "Ideate and plan original short form content ideas",
             "Turn our long form videos into multiple short form videos (via editing)",
             "Manage and train short form editors",
             "Post and manage accounts"
         ],
-        qualifications: [
+        idealCandidate: [
             "Fluent and experienced in Premiere Pro",
             "Knowledgeable in short form content",
             "Great Communicator",
             "Leadership qualities",
-            "Creative"
-        ],
-        additionalSkills: [
+            "Creative",
             "Stays up to date with short form content and trends",
+            "Wants to work long term and believes in the vision of our channel",
+            "Wants to grow their skills and social media knowledge",
             "Detail Oriented",
             "Organizational Skills",
-            "Great sense of humor",
-            "Must be 18+ and fluent in English"
+            "Great sense of humor"
         ]
     },
     "Short Form Editor": {
-        overview: "Responsible for editing short form videos for MindSquire accounts (YT Shorts, TikTok, Instagram)",
+        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nWhat you will do:\n\nResponsible for editing short form videos for MindSquire accounts (YT Shorts, TikTok, Instagram).",
         responsibilities: [
             "Turn horizontal long form videos into 60 second vertical clips",
             "Caption videos",
             "Add Sound design",
             "Optimize long form footage for short form"
         ],
-        qualifications: [
+        idealCandidate: [
             "Fluent and experienced in Premiere Pro",
             "Understanding of short form content",
             "Great Communicator",
-            "Detail Oriented"
-        ],
-        additionalSkills: [
+            "Detail Oriented",
             "Sound design experience",
             "Social media knowledge",
-            "Great sense of humor",
-            "Must be 18+ and fluent in English"
+            "Great sense of humor"
         ]
     },
     "Head of Operations": {
-        overview: "This is arguably the most important role we are needing to fill. We're looking for someone to join our team as a key member. You will eventually help run various operations that go into growing our YouTube channel. You will be trained over a LONG period of time in every aspect of our business - from what makes a good thumbnail, to BTS business, to storytelling and retention.",
-        responsibilities: [
-            "Learn and manage all aspects of YouTube operations",
-            "Develop strategies for channel growth",
-            "Oversee content planning and execution",
-            "Manage team workflows and processes"
-        ],
-        qualifications: [
+        overview: "Remote or in Person Position, Must be 18+ and fluent in English\n\nThis is arguably the most important role we are needing to fill. We’re looking for someone to join our team as a key member. You will eventually help run various operations that go into growing our YouTube channel. We need someone who has the desire to learn and grow in the YouTube space just as much as we are.\n\nYou will be trained over a LONG period of time in every aspect of our business. This is everything from what makes a good thumbnail, to BTS business, to storytelling and retention.\n\nIf this interests you, apply below.",
+        idealCandidate: [
             "Wants to learn as much as possible about YouTube, business, and creating content",
             "Wants to dedicate their time to helping run our YouTube channel",
             "Strong leadership and communication skills",
-            "Passionate about content creation"
-        ],
-        additionalSkills: [
+            "Passionate about content creation",
             "Project management experience",
             "Strategic thinking",
-            "Adaptable and eager to learn",
-            "Must be 18+ and fluent in English"
+            "Adaptable and eager to learn"
         ]
     },
     "Open Application": {
-        overview: "If you think you have a special set of skills that would be beneficial to our content, but you don't see a role currently listed that fits your background, we'd love to hear from you! Tell us about your unique talents and how you could contribute to our team.",
+        overview: "If you think you have a special set of skills that would be beneficial to our content, but you don’t see a role currently listed that fits your background, use this application to submit your resume, portfolio, or whatever information that may be applicable!",
         responsibilities: [
             "To be defined based on your unique skills and our needs",
             "Opportunity to create and shape your own role",
             "Contribute to channel growth in your area of expertise"
         ],
-        qualifications: [
+        idealCandidate: [
             "Passion for YouTube content creation",
             "Strong communication skills",
             "Self-motivated and proactive",
-            "Creative problem solver"
-        ],
-        additionalSkills: [
+            "Creative problem solver",
             "Any relevant skills or experience",
-            "Must be 18+ and fluent in English",
             "Willingness to learn and grow with the team"
         ]
     }
@@ -254,10 +229,6 @@ function createApplicationModal() {
                         <ul class="qualifications-list"></ul>
                     </div>
                     
-                    <div class="job-section">
-                        <h3>Additional Skills (Preferred)</h3>
-                        <ul class="additional-skills-list"></ul>
-                    </div>
                 </div>
 
                 <div class="application-form-side">
@@ -272,7 +243,14 @@ function createApplicationModal() {
                     >
                         <input type="hidden" name="_subject" value="New job application">
                         <input type="hidden" name="role" id="role-input">
-                        
+                        <div class="form-group">
+                            <label for="age-confirm">Are You 18 Years or Older? *</label>
+                            <select id="age-confirm" name="age-confirm" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -334,19 +312,29 @@ function populateJobDetails(roleTitle) {
 
     // Create new modal and populate
     createApplicationModal();
-    
+
+    // Set title and disclaimer at the top
     document.querySelector('.role-title-display').textContent = roleTitle;
-    document.querySelector('.overview-display').textContent = details.overview;
+    document.querySelector('.overview-display').innerHTML = `
+        <span class="disclaimer">Remote Position, Paid Per Project, Must be 18+ and fluent in English</span>
+        <br><br>
+        ${details.overview}
+    `;
     document.querySelector('#role-input').value = roleTitle;
 
+    // Use fallback empty array if responsibilities or idealCandidate is undefined
     document.querySelector('.responsibilities-list').innerHTML = 
-        details.responsibilities.map(item => `<li>${item}</li>`).join('');
-    
+        (details.responsibilities || []).map(item => `<li>${item}</li>`).join('');
+
     document.querySelector('.qualifications-list').innerHTML = 
-        details.qualifications.map(item => `<li>${item}</li>`).join('');
-    
-    document.querySelector('.additional-skills-list').innerHTML = 
-        details.additionalSkills.map(item => `<li>${item}</li>`).join('');
+        (details.idealCandidate || []).map(item => `<li>${item}</li>`).join('');
+    document.querySelector('.qualifications-list').previousElementSibling.textContent = "Ideal Candidate"; // Update section title
+
+    // Special case: update the "Creative Producer" responsibilities
+    if (roleTitle === "Creative Producer") {
+        const additionalText = " These include 'Segment Ideas, Video Structure, Funny Ideas, Jokes, etc.' to enhance the detail and creativity of each video.";
+        document.querySelector('.responsibilities-list').innerHTML += `<li>${additionalText}</li>`;
+    }
 }
 
 function showApplicationModal(roleTitle) {
