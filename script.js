@@ -287,19 +287,19 @@ function createApplicationModal() {
                         </div>
                         
                         <div class="form-group">
+                            <label for="portfolio">YouTube Channel, Portfolio, or Website URL</label>
+                            <input type="url" id="portfolio" name="portfolio">
+                        </div>
+                        <div class="form-group">
                             <label for="resume">Resume/CV *</label>
                             <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="cover-letter">Cover Letter *</label>
-                            <input type="file" id="cover-letter" name="cover-letter" accept=".pdf,.doc,.docx" required>
+                            <label for="cover-letter">Cover Letter</label>
+                            <input type="file" id="cover-letter" name="cover-letter" accept=".pdf,.doc,.docx">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="portfolio">Portfolio URL</label>
-                            <input type="url" id="portfolio" name="portfolio">
-                        </div>
                         
                         <div class="form-group">
                             <label for="additional-info">Why do you want to join our team? *</label>

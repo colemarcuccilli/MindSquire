@@ -1,4 +1,5 @@
-*{
+/* Base Styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -25,8 +26,24 @@ body {
     padding: 0 20px;
 }
 
-/* Hero Section - Fixed size, no vertical scaling */
-/* Update in styles.css */
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 860px;
+    overflow: hidden;
+    pointer-events: auto;
+}
+
+.thumbnails-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
+}
+
 .thumbnail-row {
     display: flex;
     gap: 20px;
@@ -45,26 +62,6 @@ body {
     will-change: transform, filter;
 }
 
-/* Add these new styles */
-.thumbnails-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: auto;
-}
-
-.hero {
-    position: relative;
-    height: 860px;
-    overflow: hidden;
-    pointer-events: auto;
-}
-
-
-/* Update animation keyframes (same speed, just for reference) */
 @keyframes scrollLeft {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -176,12 +173,13 @@ body {
     transform: translateX(-50%) scaleX(1);
 }
 
+/* Stats Grid */
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Changed from 3 to 2 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     margin-bottom: 60px;
-    max-width: 800px; /* Added to center the two cards */
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -212,9 +210,8 @@ body {
     background: var(--card-bg);
     border-radius: 15px;
     padding: 40px;
-    margin-top: 60px; /* Increase space above hiring box */
     max-width: 800px;
-    margin: 60px auto 0; /* Center and add space above */
+    margin: 60px auto 0;
 }
 
 .hiring-header {
@@ -231,62 +228,6 @@ body {
 
 .hiring-content p {
     margin-bottom: 15px;
-}
-
-/* Perks Section */
-.perks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.perk-card {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.perk-card:hover {
-    transform: translateY(-5px);
-}
-
-.perk-icon {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-/* Community Section */
-.community-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-}
-
-.community-map {
-    width: 100%;
-    height: 400px;
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.community-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.community-info {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 15px;
-}
-
-.location-pin {
-    color: var(--primary-color);
-    margin-right: 10px;
 }
 
 /* Open Roles */
@@ -314,27 +255,169 @@ body {
     margin-bottom: 5px;
 }
 
-.role-location {
-    color: #888;
-    font-size: 0.9rem;
+/* Application Modal */
+.application-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
-/* Amenities */
-.amenities-list {
+.application-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: auto;
+}
+
+.job-details-side,
+.application-form-side {
+    padding: 40px;
+}
+
+/* Job Details Side */
+.job-details-side {
+    background: #1a1a1a;
+    border-right: 1px solid #333;
+}
+
+.job-details-side h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.job-section {
+    margin-bottom: 30px;
+}
+
+.job-section h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.job-section ul {
     list-style: none;
+    padding-left: 0;
+}
+
+.job-section ul li {
+    color: #ccc;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    padding-left: 20px;
+    position: relative;
+}
+
+.job-section ul li:before {
+    content: "•";
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Application Form Side */
+.application-form-side {
+    background: #222;
+    position: relative;
+}
+
+.application-form-side h2 {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    z-index: 1001;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    background: #333;
+    border: 1px solid #444;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 153, 20, 0.2);
+}
+
+.form-group input[type="file"] {
+    padding: 10px;
+    background: #333;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    margin-right: 16px;
+    transition: background 0.3s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: #ff8800;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
     margin-top: 20px;
 }
 
-.amenities-list li {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-}
-
-.amenities-list i {
-    color: var(--primary-color);
-    margin-right: 15px;
-    width: 20px;
+.submit-btn:hover {
+    background: #ff8800;
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -350,116 +433,83 @@ body {
     margin-bottom: 20px;
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* Desktop Layout */
+@media (min-width: 769px) {
+    .application-container {
+        flex-direction: row;
     }
-    
-    .community-content {
-        grid-template-columns: 1fr;
+
+    .job-details-side,
+    .application-form-side {
+        flex: 1;
+        height: 90vh;
+        overflow-y: auto;
     }
 }
 
+/* Mobile Layout */
 @media (max-width: 768px) {
+    .application-container {
+        flex-direction: column;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .job-details-side,
+    .application-form-side {
+        width: 100%;
+        height: auto;
+    }
+
+    .job-details-side {
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .close-btn {
+        position: fixed;
+        right: 25px;
+        top: 25px;
+        background: var(--dark-bg);
+        padding: 10px;
+        border-radius: 50%;
+    }
+
     .stats-grid {
         grid-template-columns: 1fr;
     }
-    
-    .perks-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
+
     .section {
         padding: 60px 0;
     }
 }
 
 @media (max-width: 480px) {
-    .perks-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.application-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
-.application-container {
-    display: flex;
-    width: 90%;
-    max-width: 1200px;
-    height: 90vh;
-    background: var(--card-bg);
-    border-radius: 15px;
-    overflow: hidden;
-}
-
-.job-details-side,
-.application-form-side {
-    flex: 1;
-    padding: 40px;
-    overflow-y: auto;
-}
-
-.job-details-side {
-    background: #1a1a1a;
-    border-right: 1px solid #333;
-}
-
-.job-section {
-    margin-bottom: 30px;
-}
-
-.job-section h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-.job-section ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.job-section ul li {
-    margin-bottom: 10px;
-    padding-left: 20px;
-    position: relative;
-}
-
-.job-section ul li:before {
-    content: "•";
-    color: var(--primary-color);
-    position: absolute;
-    left: 0;
-}
-
-.close-btn {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #fff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
     .application-container {
-        flex-direction: column;
+        width: 95%;
+        padding: 15px;
     }
-    
+
     .job-details-side,
     .application-form-side {
-        width: 100%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .application-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .job-details-side,
+    .application-form-side {
+        padding: 20px;
+    }
+
+    .perks-grid {
+        grid-template-columns: 1fr;
     }
 }
 
