@@ -30,19 +30,21 @@ for (let i = 0; i < numRows; i++) {
             img.alt = 'Video Thumbnail';
             img.loading = 'lazy';
             
+            // Inside the thumbnail creation loop
+            // Inside the thumbnail creation loop
             img.addEventListener('mouseenter', function() {
-                this.style.setProperty('filter', 'brightness(0.9)', 'important');
-                this.style.setProperty('transform', 'scale(1.1)', 'important');
-                this.style.setProperty('z-index', '100', 'important');
+                this.classList.add('lit');
+                this.style.transition = 'all 0.3s ease';
             });
 
             img.addEventListener('mouseleave', function() {
                 const self = this;
-                self.style.setProperty('transform', 'scale(1)', 'important');
-                self.style.setProperty('z-index', '1', 'important');
+                self.style.transition = 'all 0.5s ease';
                 setTimeout(() => {
-                    self.style.setProperty('filter', 'brightness(0.3)', 'important');
-                }, 3000);
+                    if (!self.matches(':hover')) {
+                        self.classList.remove('lit');
+                    }
+                }, 2500);
             });
 
             row.appendChild(img);
@@ -373,6 +375,8 @@ document.querySelectorAll('.role-card').forEach(card => {
         showApplicationModal(roleTitle);
     });
 });
+
+
 
 // Close modal when clicking outside
 window.addEventListener('click', (e) => {

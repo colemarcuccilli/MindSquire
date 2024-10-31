@@ -41,7 +41,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 1;
-    pointer-events: auto;
+    pointer-events: auto; /* Make sure this is set */
 }
 
 .thumbnail-row {
@@ -53,6 +53,7 @@ body {
 }
 
 .thumbnail {
+    pointer-events: auto; 
     width: 320px;
     height: 180px;
     border-radius: 8px;
@@ -62,6 +63,11 @@ body {
     will-change: transform, filter;
 }
 
+.thumbnail.lit {
+    filter: brightness(0.9);
+    transform: scale(1.05);
+    z-index: 100;
+}
 @keyframes scrollLeft {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -81,6 +87,11 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    pointer-events: none; /* Add this line */
+}
+.hero-content img,
+.hero-content a {
+    pointer-events: auto;
 }
 
 .logo {
