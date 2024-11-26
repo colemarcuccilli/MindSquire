@@ -80,7 +80,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Job details data
 const jobDetails = {
     "Assistant Editor": {
-        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout The Role:\n\nWe are looking for a motivated video editor to work in the earlier stages of the editing process. This role will start post production off on the right track. This role focuses less on complex editing techniques, and focuses more on shaping the story, ordering segments, and creating an entertaining YouTube video!",
+        overview: "About The Role:\n\nWe are looking for a motivated video editor to work in the earlier stages of the editing process. This role will start post production off on the right track. This role focuses less on complex editing techniques, and focuses more on shaping the story.",
         responsibilities: [
             "Responsible for transforming raw footage into rough draft cuts",
             "Synching, Cutting, Optimizing, Ordering, ETC.",
@@ -100,7 +100,7 @@ const jobDetails = {
         ]
     },
     "GFX / Sound Design Editor": {
-        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout The Role:\n\nWe are looking for an experienced video editor to help us turn a rough cut into a polished, high-quality video. Attention to detail is essential, as we need someone who values precision in every aspect of editing. If you're skilled in creating clean, professional looking graphics and have a talent for crafting amazing, captivating sound design, this role is perfect for you!",
+        overview: "About The Role:\n\nWe are looking for an experienced video editor to help us turn a rough cut into a polished, high-quality video. Attention to detail is essential, as we need someone who values precision in every aspect of editing. If you're skilled in creating clean, professional looking graphics and have a talent for crafting amazing, captivating sound design, this role is perfect for you!",
         responsibilities: [
             "Responsible for turning a rough cut video into a finished product",
             "Graphics, Sound design, Captions, Framing, ETC.",
@@ -118,10 +118,10 @@ const jobDetails = {
         ]
     },
     "Creative Producer": {
-        overview: "Remote or in Person Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout this role:\n\nWe are looking for a creative, funny, and motivated person to help us plan and produce the best videos we possibly can. We need someone who is great at coming up with ideas, as well as helping execute them, and staying organized. If you are someone who possesses these traits, this role is a great fit for you!",
+        overview: "About this role:\n\nWe are looking for a creative, funny, and motivated person to help us plan and produce the best videos we possibly can. We need someone who is great at coming up with ideas, as well as helping execute them, and staying organized. If you are someone who possesses these traits, this role is a great fit for you!",
         responsibilities: [
             "Collaborate with us and our team to help plan and produce an entire video",
-            "Creatively brainstorm and help plan each part of our videos. These include 'Segment Ideas, Video Structure, Funny Ideas, Jokes, etc.' to enhance the detail and creativity of each video",
+            "Creatively brainstorm and help plan each part of our videos.",
             "Find people, props, locations, and anything that will be needed for each video"
         ],
         idealCandidate: [
@@ -137,7 +137,7 @@ const jobDetails = {
         ]
     },
     "Head of Short Form Content": {
-        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nAbout the role:\n\nWe need someone to manage and oversee all of our short form content. You will help create short form content to be posted on all platforms (YouTube Shorts, TikTok, Instagram).",
+        overview: "About the role:\n\nWe need someone to manage and oversee all of our short form content. You will help create short form content to be posted on all platforms (YouTube Shorts, TikTok, Instagram).",
         responsibilities: [
             "Ideate and plan original short form content ideas",
             "Turn our long form videos into multiple short form videos (via editing)",
@@ -159,11 +159,11 @@ const jobDetails = {
         ]
     },
     "Short Form Editor": {
-        overview: "Remote Position, Paid Per Project, Must be 18+ and fluent in English\n\nWhat you will do:\n\nResponsible for editing short form videos for MindSquire accounts (YT Shorts, TikTok, Instagram).",
+        overview: "What you will do:\n\nResponsible for editing short form videos for MindSquire accounts (YT Shorts, TikTok, Instagram).",
         responsibilities: [
             "Turn horizontal long form videos into 60 second vertical clips",
             "Caption videos",
-            "Add Sound design",
+            "Add sound design",
             "Optimize long form footage for short form"
         ],
         idealCandidate: [
@@ -177,7 +177,7 @@ const jobDetails = {
         ]
     },
     "Head of Operations": {
-        overview: "Remote or in Person Position, Must be 18+ and fluent in English\n\nThis is arguably the most important role we are needing to fill. We’re looking for someone to join our team as a key member. You will eventually help run various operations that go into growing our YouTube channel. We need someone who has the desire to learn and grow in the YouTube space just as much as we are.\n\nYou will be trained over a LONG period of time in every aspect of our business. This is everything from what makes a good thumbnail, to BTS business, to storytelling and retention.\n\nIf this interests you, apply below.",
+        overview: "This is arguably the most important role we are needing to fill. We’re looking for someone to join our team as a key member. You will eventually help run various operations that go into growing our YouTube channel. We need someone who has a borderline insane desire to learn and grow in the YouTube space.\n\nYou will be trained over a LONG period of time in every aspect of our business. This is everything from what makes a good thumbnail, to BTS business, to storytelling and retention.\n\nIf this interests you, apply below.",
         idealCandidate: [
             "Wants to learn as much as possible about YouTube, business, and creating content",
             "Wants to dedicate their time to helping run our YouTube channel",
@@ -200,7 +200,6 @@ const jobDetails = {
             "Strong communication skills",
             "Self-motivated and proactive",
             "Creative problem solver",
-            "Any relevant skills or experience",
             "Willingness to learn and grow with the team"
         ]
     }
@@ -243,14 +242,7 @@ function createApplicationModal() {
                     >
                         <input type="hidden" name="_subject" value="New job application">
                         <input type="hidden" name="role" id="role-input">
-                        <div class="form-group">
-                            <label for="age-confirm">Are You 18 Years or Older? *</label>
-                            <select id="age-confirm" name="age-confirm" required>
-                                <option value="" disabled selected>Select an option</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
+                        
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -276,17 +268,24 @@ function createApplicationModal() {
                         </div>
                         <div class="form-group">
                             <label for="resume">Resume/CV *</label>
-                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
                         </div>
                         
                         <div class="form-group">
                             <label for="cover-letter">Cover Letter</label>
                             <input type="file" id="cover-letter" name="cover-letter" accept=".pdf,.doc,.docx">
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="age-confirm">Are You 18 Years or Older? *</label>
+                            <select id="age-confirm" name="age-confirm" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
                         
                         <div class="form-group">
-                            <label for="additional-info">Why do you want to join our team? What Makes you a Great Candidate?</label>
+                            <label for="additional-info">What value can you add to our company or content?</label>
                             <textarea id="additional-info" name="additional-info" rows="5" required></textarea>
                         </div>
                         
