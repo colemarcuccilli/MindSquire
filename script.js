@@ -320,10 +320,16 @@ function populateJobDetails(roleTitle) {
         ${details.overview}
     `;
     document.querySelector('#role-input').value = roleTitle;
-
     // Use fallback empty array if responsibilities or idealCandidate is undefined
-    document.querySelector('.responsibilities-list').innerHTML = 
-        (details.responsibilities || []).map(item => `<li>${item}</li>`).join('');
+    const responsibilitiesSection = document.querySelector('.responsibilities-list').parentElement;
+
+    if (details.responsibilities && details.responsibilities.length > 0) {
+        document.querySelector('.responsibilities-list').innerHTML = 
+            details.responsibilities.map(item => `<li>${item}</li>`).join('');
+        responsibilitiesSection.style.display = ''; // Ensure it's visible if there are responsibilities
+    } else {
+        responsibilitiesSection.style.display = 'none'; // Hide the section if no responsibilities
+    }
 
     document.querySelector('.qualifications-list').innerHTML = 
         (details.idealCandidate || []).map(item => `<li>${item}</li>`).join('');
