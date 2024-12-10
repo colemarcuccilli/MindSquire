@@ -323,7 +323,9 @@ function populateJobDetails(roleTitle) {
             details.responsibilities.map(item => `<li>${item}</li>`).join('');
         responsibilitiesSection.style.display = ''; // Ensure it's visible if there are responsibilities
     } else {
+        document.querySelector('.responsibilities-list').innerHTML = ''; // Clear old content
         responsibilitiesSection.style.display = 'none'; // Hide the section if no responsibilities
+
     }
 
     document.querySelector('.qualifications-list').innerHTML = 
