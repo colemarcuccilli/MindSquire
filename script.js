@@ -120,9 +120,9 @@ const jobDetails = {
     "Creative Producer": {
         overview: "About this role:\n\nWe are looking for a creative, funny, and motivated person to help us plan and produce the best videos we possibly can. We need someone who is great at coming up with ideas, as well as helping execute them, and staying organized. If you are someone who possesses these traits, this role is a great fit for you!",
         responsibilities: [
-            "Collaborate with us and our team to help plan and produce an entire video",
             "Creatively brainstorm and help plan each part of our videos.",
-            "Find people, props, locations, and anything that will be needed for each video"
+            "This includes segment ideas, video structure, jokes, etc.",
+            "Find people, props, locations, and anything that will be needed for each video."
         ],
         idealCandidate: [
             "EXCELLENT Communicator",
@@ -190,11 +190,6 @@ const jobDetails = {
     },
     "Open Application": {
         overview: "If you think you have a special set of skills that would be beneficial to our content, but you don’t see a role currently listed that fits your background, use this application to submit your resume, portfolio, or whatever information that may be applicable!",
-        responsibilities: [
-            "To be defined based on your unique skills and our needs",
-            "Opportunity to create and shape your own role",
-            "Contribute to channel growth in your area of expertise"
-        ],
         idealCandidate: [
             "Passion for YouTube content creation",
             "Strong communication skills",
@@ -260,14 +255,14 @@ function createApplicationModal() {
                         
                         <div class="form-group">
                             <label for="portfolio">YouTube Channel, Portfolio, or Website URL</label>
-                            <input type="url" id="portfolio" name="portfolio">
+                            <input type="text" id="portfolio" name="portfolio">
                         </div>
                         <div class="form-group">
                             <label for="social handles">Social Media Handles</label>
                             <input type="url" id="social handles" name="social handles">
                         </div>
                         <div class="form-group">
-                            <label for="resume">Resume/CV *</label>
+                            <label for="resume">Resume/CV</label>
                             <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
                         </div>
                         
@@ -285,7 +280,7 @@ function createApplicationModal() {
                         </div>
                         
                         <div class="form-group">
-                            <label for="additional-info">What value can you add to our company or content?</label>
+                            <label for="additional-info">What makes you a great candidate for this position? Why do you want to join our team?</label>
                             <textarea id="additional-info" name="additional-info" rows="5" required></textarea>
                         </div>
                         
