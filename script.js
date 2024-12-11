@@ -336,16 +336,16 @@ function populateJobDetails(roleTitle) {
         document.querySelector('.responsibilities-list').innerHTML = 
             details.responsibilities.map(item => `<li>${item}</li>`).join('');
         responsibilitiesSection.style.display = '';
- // Ensure it's visible if there are responsibilities
     } else {
-        document.querySelector('.responsibilities-list').innerHTML = ''; // Clear old content
-        responsibilitiesSection.style.display = 'none'; // Hide the section if no responsibilities
-
+        document.querySelector('.responsibilities-list').innerHTML = '';
+        responsibilitiesSection.style.display = 'none';
     }
 
-    // Special case: update the "Creative Producer" responsibilities
-    
+    document.querySelector('.qualifications-list').innerHTML = 
+        (details.idealCandidate || []).map(item => `<li>${item}</li>`).join('');
+    document.querySelector('.qualifications-list').previousElementSibling.textContent = "Ideal Candidate";
 }
+
 
 function showApplicationModal(roleTitle) {
     // First create/update the modal
