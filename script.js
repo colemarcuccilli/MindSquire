@@ -259,7 +259,7 @@ function createApplicationModal() {
                         </div>
                         <div class="form-group">
                             <label for="social handles">Social Media Handles</label>
-                            <input type="url" id="social handles" name="social handles">
+                            <input type="text" id="social handles" name="social handles">
                         </div>
                         <div class="form-group">
                             <label for="resume">Resume/CV</label>
@@ -309,12 +309,26 @@ function populateJobDetails(roleTitle) {
 
     // Set title and disclaimer at the top
     document.querySelector('.role-title-display').textContent = roleTitle;
+        // Customize disclaimer based on role
+    let disclaimerText = "";
+    if (roleTitle !== "Head of Operations" && roleTitle !== "Open Application" && roleTitle !== "Head of Short Form Content") {
+        disclaimerText = '<span class="disclaimer">Remote Position, Paid Per Project, Must be 18+ and fluent in English</span><br><br>';
+    } else {
+        disclaimerText = '<span class="disclaimer">Must be 18+ and fluent in English</span><br><br>';
+    }
+    
     document.querySelector('.overview-display').innerHTML = `
-        <span class="disclaimer">Remote Position, Paid Per Project, Must be 18+ and fluent in English</span>
-        <br><br>
+        ${disclaimerText}
         ${details.overview}
     `;
     document.querySelector('#role-input').value = roleTitle;
+    // Added this new code block in populateJobDetails function
+    // Update the application question for Open Application
+    if (roleTitle === "Open Application") {
+        document.querySelector('label[for="additional-info"]').textContent = "What value can you add to our company or content?";
+    } else {
+        document.querySelector('label[for="additional-info"]').textContent = "What makes you a great candidate for this position? Why do you want to join our team?";
+    }
     // Use fallback empty array if responsibilities or idealCandidate is undefined
     const responsibilitiesSection = document.querySelector('.responsibilities-list').parentElement;
 
