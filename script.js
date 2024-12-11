@@ -347,10 +347,7 @@ function populateJobDetails(roleTitle) {
     document.querySelector('.qualifications-list').previousElementSibling.textContent = "Ideal Candidate"; // Update section title
 
     // Special case: update the "Creative Producer" responsibilities
-    if (roleTitle === "Creative Producer") {
-        const additionalText = " These include 'Segment Ideas, Video Structure, Funny Ideas, Jokes, etc.' to enhance the detail and creativity of each video.";
-        document.querySelector('.responsibilities-list').innerHTML += `<li>${additionalText}</li>`;
-    }
+    
 }
 
 function showApplicationModal(roleTitle) {
