@@ -342,10 +342,6 @@ function populateJobDetails(roleTitle) {
 
     }
 
-    document.querySelector('.qualifications-list').innerHTML = 
-        (details.idealCandidate || []).map(item => `<li>${item}</li>`).join('');
-    document.querySelector('.qualifications-list').previousElementSibling.textContent = "Ideal Candidate"; // Update section title
-
     // Special case: update the "Creative Producer" responsibilities
     
 }
