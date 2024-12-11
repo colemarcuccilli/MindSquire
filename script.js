@@ -333,11 +333,8 @@ function populateJobDetails(roleTitle) {
     const responsibilitiesSection = document.querySelector('.responsibilities-list').parentElement;
 
     if (details.responsibilities && details.responsibilities.length > 0) {
-        console.log("Original responsibilities:", details.responsibilities);
-        const html = details.responsibilities.map(item => `<li>${item}</li>`).join('');
-        console.log("Generated HTML:", html);
-        document.querySelector('.responsibilities-list').innerHTML = html;
-        console.log("Final innerHTML:", document.querySelector('.responsibilities-list').innerHTML);
+        document.querySelector('.responsibilities-list').innerHTML = 
+            details.responsibilities.map(item => `<li>${item}</li>`).join('');
         responsibilitiesSection.style.display = '';
 } // Ensure it's visible if there are responsibilities
     } else {
