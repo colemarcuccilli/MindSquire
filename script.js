@@ -1,10 +1,26 @@
-// Initialize thumbnail variables
+// ============================================
+// MindSquire — 2026 refresh
+// ============================================
+
+// ---- Auto-year in footer ----
+const yearEl = document.getElementById('current-year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ---- Nav scroll state ----
+const nav = document.querySelector('.nav');
+let lastScrollY = 0;
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastScrollY = y;
+}, { passive: true });
+
+// ---- Thumbnail marquee ----
 const thumbnailsContainer = document.querySelector('.thumbnails-container');
 const numRows = 4;
-const thumbnailsPerRow = 5;
 const gap = 20;
 
-// Thumbnail ranges
 const thumbnailRanges = [
     { start: 0, end: 10 },
     { start: 11, end: 21 },
@@ -12,16 +28,14 @@ const thumbnailRanges = [
     { start: 33, end: 43 }
 ];
 
-// Initialize thumbnails
 for (let i = 0; i < numRows; i++) {
     const row = document.createElement('div');
     row.className = 'thumbnail-row';
     row.style.top = `${i * (180 + gap)}px`;
     row.style.animation = `scroll${i % 2 === 0 ? 'Left' : 'Right'} ${100 + i * 10}s linear infinite`;
-    
+
     const range = thumbnailRanges[i];
-    
-    // Create thumbnails for this row
+
     for (let j = 0; j < 2; j++) {
         for (let k = range.start; k <= range.end; k++) {
             const img = document.createElement('img');
@@ -29,55 +43,85 @@ for (let i = 0; i < numRows; i++) {
             img.className = 'thumbnail';
             img.alt = 'Video Thumbnail';
             img.loading = 'lazy';
-            
-            // Inside the thumbnail creation loop
-            // Inside the thumbnail creation loop
-            img.addEventListener('mouseenter', function() {
+
+            img.addEventListener('mouseenter', function () {
                 this.classList.add('lit');
-                this.style.transition = 'all 0.3s ease';
+                this.style.transition = 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
             });
 
-            img.addEventListener('mouseleave', function() {
+            img.addEventListener('mouseleave', function () {
                 const self = this;
-                self.style.transition = 'all 0.5s ease';
+                self.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
                 setTimeout(() => {
                     if (!self.matches(':hover')) {
                         self.classList.remove('lit');
                     }
-                }, 2500);
+                }, 2200);
             });
 
             row.appendChild(img);
         }
     }
-    
+
     thumbnailsContainer.appendChild(row);
 }
 
-// Squiggly line animation
-const observer = new IntersectionObserver((entries) => {
+// ---- Scroll reveal ----
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.querySelector('.squiggly').classList.add('visible');
+            const delay = parseInt(entry.target.dataset.delay || '0', 10);
+            setTimeout(() => entry.target.classList.add('is-visible'), delay);
+            revealObserver.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+// ---- Stats count-up ----
+const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.count);
+        const suffix = el.dataset.suffix || '';
+        if (isNaN(target)) return;
+        const duration = 1600;
+        const start = performance.now();
+        const decimals = target % 1 !== 0 ? 1 : 0;
+
+        function tick(now) {
+            const elapsed = now - start;
+            const p = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            const val = (target * eased).toFixed(decimals);
+            el.textContent = val + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+            else el.textContent = target + suffix;
+        }
+        requestAnimationFrame(tick);
+        statObserver.unobserve(el);
     });
 }, { threshold: 0.5 });
 
-document.querySelectorAll('.section-title').forEach(title => {
-    observer.observe(title);
-});
+document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
 
-// Smooth scroll for anchor links
+// ---- Smooth scroll ----
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const target = this.getAttribute('href');
+        if (target === '#') return;
+        const el = document.querySelector(target);
+        if (!el) return;
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        el.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// Job details data
+// ============================================
+// Job data + modal (unchanged logic, Formspree intact)
+// ============================================
 const jobDetails = {
     "Assistant Editor": {
         overview: "About The Role:\n\nWe are looking for a motivated video editor to work in the earlier stages of the editing process. This role will start post production off on the right track. This role focuses less on complex editing techniques, and focuses more on shaping the story.",
@@ -200,36 +244,30 @@ const jobDetails = {
     }
 };
 
-// Create application modal
 function createApplicationModal() {
     const modalHTML = `
         <div class="application-modal">
             <div class="application-container">
                 <div class="job-details-side">
                     <h2 class="role-title-display"></h2>
-                    
                     <div class="job-section">
                         <h3>Overview</h3>
                         <p class="overview-display"></p>
                     </div>
-                    
                     <div class="job-section">
                         <h3>Key Responsibilities</h3>
                         <ul class="responsibilities-list"></ul>
                     </div>
-                    
                     <div class="job-section">
                         <h3>Qualifications</h3>
                         <ul class="qualifications-list"></ul>
                     </div>
-                    
                 </div>
-
                 <div class="application-form-side">
                     <span class="close-btn">&times;</span>
                     <h2>Submit Your Application</h2>
-                    <form 
-                        id="application-form" 
+                    <form
+                        id="application-form"
                         action="https://formspree.io/f/xwpkvvyq"
                         method="POST"
                         enctype="multipart/form-data"
@@ -237,22 +275,18 @@ function createApplicationModal() {
                     >
                         <input type="hidden" name="_subject" value="New job application">
                         <input type="hidden" name="role" id="role-input">
-                        
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="email">Email Address *</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
-                        
                         <div class="form-group">
                             <label for="portfolio">YouTube Channel, Portfolio, or Website URL</label>
                             <input type="text" id="portfolio" name="portfolio">
@@ -265,7 +299,6 @@ function createApplicationModal() {
                             <label for="resume">Resume/CV</label>
                             <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
                         </div>
-                        
                         <div class="form-group">
                             <label for="cover-letter">Cover Letter</label>
                             <input type="file" id="cover-letter" name="cover-letter" accept=".pdf,.doc,.docx">
@@ -278,12 +311,10 @@ function createApplicationModal() {
                                 <option value="No">No</option>
                             </select>
                         </div>
-                        
                         <div class="form-group">
                             <label for="additional-info">What makes you a great candidate for this position? Why do you want to join our team?</label>
                             <textarea id="additional-info" name="additional-info" rows="5" required></textarea>
                         </div>
-                        
                         <button type="submit" class="submit-btn">Submit Application</button>
                     </form>
                 </div>
@@ -293,47 +324,36 @@ function createApplicationModal() {
     document.body.insertAdjacentHTML('beforeend', modalHTML);
 }
 
-// Modal management functions
 function populateJobDetails(roleTitle) {
     const details = jobDetails[roleTitle];
     if (!details) return;
 
-    // Remove any existing modal
     const existingModal = document.querySelector('.application-modal');
-    if (existingModal) {
-        existingModal.remove();
-    }
+    if (existingModal) existingModal.remove();
 
-    // Create new modal and populate
     createApplicationModal();
 
-    // Set title and disclaimer at the top
     document.querySelector('.role-title-display').textContent = roleTitle;
-        // Customize disclaimer based on role
+
     let disclaimerText = "";
     if (roleTitle !== "Head of Operations" && roleTitle !== "Open Application" && roleTitle !== "Head of Short Form Content") {
-        disclaimerText = '<span class="disclaimer">Remote Position, Paid Per Project, Must be 18+ and fluent in English</span><br><br>';
+        disclaimerText = '<span class="disclaimer">Remote · Paid per project · 18+ · Fluent English</span><br><br>';
     } else {
-        disclaimerText = '<span class="disclaimer">Must be 18+ and fluent in English</span><br><br>';
+        disclaimerText = '<span class="disclaimer">18+ · Fluent English</span><br><br>';
     }
-    
-    document.querySelector('.overview-display').innerHTML = `
-        ${disclaimerText}
-        ${details.overview}
-    `;
+
+    document.querySelector('.overview-display').innerHTML = `${disclaimerText}${details.overview}`;
     document.querySelector('#role-input').value = roleTitle;
-    // Added this new code block in populateJobDetails function
-    // Update the application question for Open Application
+
     if (roleTitle === "Open Application") {
         document.querySelector('label[for="additional-info"]').textContent = "What value can you add to our company or content?";
     } else {
         document.querySelector('label[for="additional-info"]').textContent = "What makes you a great candidate for this position? Why do you want to join our team?";
     }
-    // Use fallback empty array if responsibilities or idealCandidate is undefined
-    const responsibilitiesSection = document.querySelector('.responsibilities-list').parentElement;
 
+    const responsibilitiesSection = document.querySelector('.responsibilities-list').parentElement;
     if (details.responsibilities && details.responsibilities.length > 0) {
-        document.querySelector('.responsibilities-list').innerHTML = 
+        document.querySelector('.responsibilities-list').innerHTML =
             details.responsibilities.map(item => `<li>${item}</li>`).join('');
         responsibilitiesSection.style.display = '';
     } else {
@@ -341,32 +361,21 @@ function populateJobDetails(roleTitle) {
         responsibilitiesSection.style.display = 'none';
     }
 
-    document.querySelector('.qualifications-list').innerHTML = 
+    document.querySelector('.qualifications-list').innerHTML =
         (details.idealCandidate || []).map(item => `<li>${item}</li>`).join('');
     document.querySelector('.qualifications-list').previousElementSibling.textContent = "Ideal Candidate";
 }
 
-
 function showApplicationModal(roleTitle) {
-    // First create/update the modal
     populateJobDetails(roleTitle);
-    
-    // Then find it and show it
     const modal = document.querySelector('.application-modal');
     if (modal) {
-        // Add close button functionality
         const closeBtn = modal.querySelector('.close-btn');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-        }
-        
+        if (closeBtn) closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
         modal.style.display = 'flex';
     }
 }
 
-// Add click handlers to role cards
 document.querySelectorAll('.role-card').forEach(card => {
     card.addEventListener('click', () => {
         const roleTitle = card.querySelector('.role-title').textContent;
@@ -374,25 +383,18 @@ document.querySelectorAll('.role-card').forEach(card => {
     });
 });
 
-
-
-// Close modal when clicking outside
 window.addEventListener('click', (e) => {
     const modal = document.querySelector('.application-modal');
-    if (modal && e.target === modal) {
-        modal.style.display = 'none';
-    }
+    if (modal && e.target === modal) modal.style.display = 'none';
 });
-// Handle form submission
+
+// ---- Form submission (Formspree, unchanged) ----
 document.addEventListener('submit', async (e) => {
     if (e.target.id === 'application-form') {
         e.preventDefault();
-        
         const form = e.target;
         const formData = new FormData(form);
-        
         try {
-            // Add loading state
             const submitButton = form.querySelector('.submit-btn');
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
@@ -400,13 +402,11 @@ document.addEventListener('submit', async (e) => {
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                },
+                headers: { 'Accept': 'application/json' },
                 mode: 'cors',
                 credentials: 'same-origin'
             });
-            
+
             if (response.ok) {
                 alert('Application submitted successfully! We will be in touch soon.');
                 document.querySelector('.application-modal').style.display = 'none';
@@ -419,7 +419,6 @@ document.addEventListener('submit', async (e) => {
             console.error('Form submission error:', error);
             alert('Error submitting application. Please try again or contact us directly at mindsquirejobs@gmail.com');
         } finally {
-            // Reset button state
             const submitButton = form.querySelector('.submit-btn');
             submitButton.disabled = false;
             submitButton.textContent = 'Submit Application';

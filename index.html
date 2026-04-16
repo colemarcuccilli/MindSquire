@@ -3,95 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindSquire - Join Our Team</title>
+    <title>MindSquire — Join Our Team</title>
+    <meta name="description" content="MindSquire is hiring. Join a YouTube team that makes videos people actually love.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="MindSquireFlat_12.png" alt="MindSquire">
+            </a>
+            <a href="#roles" class="nav-cta">Apply <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </nav>
+
     <section class="hero">
         <div class="thumbnails-container">
             <!-- Thumbnails will be dynamically added here -->
         </div>
+        <div class="hero-gradient"></div>
         <div class="hero-content">
-            <img src="MindSquireFlat_12.png" alt="MindSquire Logo" class="logo">
-            <h1 class="hero-title">WE'RE HIRING!</h1>
-            <a href="#roles" class="cta-button">Join the team</a>
+            <img src="MindSquireFlat_12.png" alt="MindSquire Logo" class="logo reveal" data-reveal>
+            <p class="hero-eyebrow reveal" data-reveal data-delay="80">Now hiring · Remote · 2026</p>
+            <h1 class="hero-title reveal" data-reveal data-delay="160">We're building<br><span class="hero-accent">the next era</span> of YouTube.</h1>
+            <p class="hero-sub reveal" data-reveal data-delay="240">Join a team making videos people actually love.</p>
+            <a href="#roles" class="cta-button reveal" data-reveal data-delay="320">Join the team <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-scroll-hint reveal" data-reveal data-delay="500">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
         </div>
     </section>
 
     <section id="about" class="section">
-                <!-- In the about section -->
-                <h2 class="section-title">
-                    About Us
-                </h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">1.3B+</div>
-                <div class="stat-label">Accumulated Views</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">2M+</div>
-                <div class="stat-label">Total Combined Followers</div>
-            </div>
-        </div>
-
-        <div class="hiring">
-            <h3 class="hiring-header">We Need Your Help!</h3>
-            <div class="hiring-content">
-                <p>We are seeking motivated people to help us create high-quality YouTube videos. Our goal has always been to make great videos that make people laugh.</p>
-                <p>We started with a love for making silly YouTube videos in high school, but our productions have slowly become more complex. We need help to continue improving.</p>
-                <p>If you have a passion for YouTube or video creation, this is a great opportunity to grow your skills with our team. We're looking to fill various positions to continue growing our channel.</p>
-            </div>
-            <a href="#roles" class="cta-button">Apply Now</a>
-        </div>
-    </section>
-
-
-    
-
-    <section id="roles" class="section">
         <div class="container">
-            <h2 class="section-title">
-                Open Roles
-            </h2>
-                        <!-- Update this section in index.html -->
+            <p class="section-eyebrow reveal" data-reveal>01 — About</p>
+            <h2 class="section-title reveal" data-reveal data-delay="80">A channel built<br>on great videos.</h2>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal" data-reveal data-delay="120">
+                    <div class="stat-number" data-count="1.5" data-suffix="B+">1.5B+</div>
+                    <div class="stat-label">Accumulated Views</div>
+                </div>
+                <div class="stat-card reveal" data-reveal data-delay="200">
+                    <div class="stat-number" data-count="2" data-suffix="M+">2M+</div>
+                    <div class="stat-label">Total Combined Followers</div>
+                </div>
+            </div>
+
+            <div class="hiring reveal" data-reveal data-delay="160">
+                <h3 class="hiring-header">We need your help</h3>
+                <div class="hiring-content">
+                    <p>We're looking for motivated people to help us create high-quality YouTube videos. Our goal has always been to make great videos that make people laugh.</p>
+                    <p>We started with a love for making silly YouTube videos in high school, but our productions have slowly become more complex. We need help to continue improving.</p>
+                    <p>If you have a passion for YouTube or video creation, this is a great opportunity to grow your skills with our team. We're looking to fill various positions to continue growing our channel.</p>
+                </div>
+                <a href="#roles" class="cta-button">Apply now <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="roles" class="section section-roles">
+        <div class="container">
+            <p class="section-eyebrow reveal" data-reveal>02 — Open positions</p>
+            <h2 class="section-title reveal" data-reveal data-delay="80">Open roles.</h2>
+            <p class="section-sub reveal" data-reveal data-delay="160">Pick a role, tell us about yourself. We read every application.</p>
+
             <div class="roles-container">
-                <div class="role-card">
-                    <h3 class="role-title">Assistant Editor</h3>
+                <div class="role-card reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">01</span>
+                        <h3 class="role-title">Assistant Editor</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Remote</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
-                <div class="role-card">
-                    <h3 class="role-title">GFX / Sound Design Editor</h3>
+                <div class="role-card reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">02</span>
+                        <h3 class="role-title">GFX / Sound Design Editor</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Remote</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
-                <div class="role-card">
-                    <h3 class="role-title">Creative Producer</h3>
+                <div class="role-card reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">03</span>
+                        <h3 class="role-title">Creative Producer</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Remote</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
-                <div class="role-card">
-                    <h3 class="role-title">Head of Short Form Content</h3>
+                <div class="role-card reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">04</span>
+                        <h3 class="role-title">Head of Short Form Content</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Leadership</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
-                <div class="role-card">
-                    <h3 class="role-title">Short Form Editor</h3>
+                <div class="role-card reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">05</span>
+                        <h3 class="role-title">Short Form Editor</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Remote</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
-                <div class="role-card">
-                    <h3 class="role-title">Head of Operations</h3>
+                <div class="role-card reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">06</span>
+                        <h3 class="role-title">Head of Operations</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Leadership</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
-                <div class="role-card">
-                    <h3 class="role-title">Open Application</h3>
+                <div class="role-card role-card-open reveal" data-reveal>
+                    <div class="role-main">
+                        <span class="role-index">—</span>
+                        <h3 class="role-title">Open Application</h3>
+                    </div>
+                    <div class="role-meta">
+                        <span class="role-tag">Any skill</span>
+                        <i class="fa-solid fa-arrow-right role-arrow"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <footer class="footer">
         <div class="container">
-            <img src="MindSquireFlat_12.png" alt="MindSquire Logo" class="footer-logo">
-            <p>© 2024 MindSquire. All rights reserved.</p>
-            
-            <!-- Email button and address -->
-            <a href="mailto:mindsquirejobs@gmail.com" class="footer-contact">Contact Us Directly</a>
-            <p href="mailto:mindsquirejobs@gmail.com" class="footer-contact footer-email">mindsquirejobs@gmail.com</p>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="MindSquireFlat_12.png" alt="MindSquire Logo" class="footer-logo">
+                    <p class="footer-tag">Making videos people love.</p>
+                </div>
+                <div class="footer-contact-block">
+                    <p class="footer-label">Get in touch</p>
+                    <a href="mailto:mindsquirejobs@gmail.com" class="footer-email-link">mindsquirejobs@gmail.com</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="current-year">2026</span> MindSquire. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-    
-    </body>
+
     <script src="script.js"></script>
-    </html>
+</body>
+</html>
